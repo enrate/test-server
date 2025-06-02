@@ -2,9 +2,9 @@
   "name": "save-statistic-arma-reforger",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.ts"
   },
   "dependencies": {
     "discord.js": "^14.18.0",

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "node server.ts"
+    "dev": "ts-node --esm server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "discord.js": "^14.18.0",
@@ -20,9 +22,15 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/enrate/save-statistic-arma-reforger/issues"
   },
-  "homepage": "https://github.com/enrate/save-statistic-arma-reforger#readme"
+  "homepage": "https://github.com/enrate/save-statistic-arma-reforger#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.2",
+    "@types/node": "^22.15.29",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
 }

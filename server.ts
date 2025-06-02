@@ -1,8 +1,8 @@
-require('dotenv/config');
-import express from "express"
+import 'dotenv/config';
+import express, { NextFunction, Request, Response, RequestHandler  } from "express"
 const app = express();
-import getUsers from "./routes/get-users";
-import postUsers from "./routes/post-users";
+import getUsers from "./routes/get-users.js";
+import postUsers from "./routes/post-users.js";
 
 // Middleware для разбора JSON
 app.use(express.json());
@@ -13,7 +13,7 @@ const API_TOKEN = 'dkfSkell35jwlslSL';
 
 
 // Middleware проверки токена
-const authMiddleware = (req, res, next) => {
+const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
   
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -38,16 +38,16 @@ app.get("/users", async (req, res) => {
 
      const users = await getUsers(filters);
      res.json(users);
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).json({ error: err.message})
   }
 })
 
-app.post("/users", authMiddleware, async (req, res) => {
+app.post("/users", authMiddleware as RequestHandler, async (req, res) => {
   try {
     const ss = await postUsers(req.body)
     res.json(ss)
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).json({ error: err.message })
   }
 })

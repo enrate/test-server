@@ -1,4 +1,4 @@
-import pool from "../db"
+import pool from "../db.js"
 import { z } from "zod/v4";
 
 const userSchema = z.object({
